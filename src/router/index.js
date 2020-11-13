@@ -1,12 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import AccountsReceivableList from "../views/AccountsReceivableList.vue";
+import AccountsReceivable from "../views/AccountsReceivable.vue";
+import AccountsPayable from "../views/AccountsPayable.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home
   },
@@ -18,6 +21,21 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+  {
+    path: "/",
+    name: "AccountsReceivableList",
+    component: AccountsReceivableList
+  },
+  {
+    path: "/accounts-receivable",
+    name: "AccountsReceivable",
+    component: AccountsReceivable
+  },
+  {
+    path: "/accounts-payable",
+    name: "AccountsPayable",
+    component: AccountsPayable
   }
 ];
 
