@@ -1,9 +1,15 @@
 "use strict";
 
-import { app, protocol, BrowserWindow } from "electron";
+import { app, protocol, BrowserWindow, ipcMain } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
+// import createWindow from "./createMainWindow";
+// import datastore from "./datastore";
+import createEstimates from "./datastoreEstimates";
+
+// メインウィンドウはGCされないようにグローバル宣言
+// let mainWindow = null;
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -31,6 +37,18 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL("app://./index.html");
   }
+  win.ipcMain = ipcMain;
+  win.ipcMain.on("save_estimate", (e, estimate) => {
+    console.log(estimate);
+    var estimates = createEstimates();
+    estimates.insertEstimate(estimate);
+  });
+  win.ipcMain.on("get_estimates", e => {
+    var estimateDb = createEstimates();
+    var estimates = estimateDb.getEstimates();
+    console.log(estimates);
+    win.webContents.send("got_estimates", estimates);
+  });
 }
 
 // Quit when all windows are closed.

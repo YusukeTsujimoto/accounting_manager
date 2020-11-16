@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">売掛管理</router-link> |
-      <router-link to="/accounts_payable">買掛管理</router-link>
+      <router-link to="/">見積一覧</router-link> |
+      <router-link to="/order-list">受注一覧</router-link>
     </div>
     <router-view />
   </div>
@@ -13,7 +13,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: left;
+  text-align: center;
   color: #2c3e50;
 }
 

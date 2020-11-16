@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
-    <datepicker :language="ja" name="create_date"></datepicker>
-  </div>
+  <datepicker
+    :language="ja"
+    :value="this.default"
+    :format="DatePickerFormat"
+  ></datepicker>
 </template>
 
 <script>
@@ -9,6 +11,12 @@ import datepicker from "vuejs-datepicker";
 import { ja } from "vuejs-datepicker/dist/locale";
 
 export default {
+  data() {
+    return {
+      default: new Date().toLocaleString(),
+      DatePickerFormat: "yyyy-MM-dd"
+    };
+  },
   components: {
     datepicker
   },

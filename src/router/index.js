@@ -1,17 +1,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import AccountsReceivableList from "../views/AccountsReceivableList.vue";
-import AccountsReceivable from "../views/AccountsReceivable.vue";
-import AccountsPayable from "../views/AccountsPayable.vue";
+import EstimateList from "../views/EstimateList";
+import Estimate from "../views/Estimate";
+import OrderList from "../views/OrderList";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/home",
-    name: "Home",
-    component: Home
+    path: "/",
+    name: "EstimateList",
+    component: EstimateList
+  },
+  {
+    path: "/estimate",
+    name: "Estimate",
+    component: Estimate
   },
   {
     path: "/about",
@@ -23,19 +27,9 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
   {
-    path: "/",
-    name: "AccountsReceivableList",
-    component: AccountsReceivableList
-  },
-  {
-    path: "/accounts-receivable",
-    name: "AccountsReceivable",
-    component: AccountsReceivable
-  },
-  {
-    path: "/accounts-payable",
-    name: "AccountsPayable",
-    component: AccountsPayable
+    path: "/order-list",
+    name: "OrderList",
+    component: OrderList
   }
 ];
 

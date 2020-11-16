@@ -37,7 +37,7 @@ var doc = {
 };
 
 db.insert(doc, function(err) {
-    console.dir(err);
+  console.dir(err);
   db.find({}, (err, docs) => {
     console.dir(docs);
   });

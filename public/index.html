@@ -8,6 +8,11 @@
     <title>会計書類管理ソフト</title>
   </head>
   <body>
+    <script>
+      require("electron").ipcRenderer.on("ping", (event, message) => {
+        console.log(message);
+      });
+    </script>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
